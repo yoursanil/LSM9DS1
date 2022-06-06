@@ -688,7 +688,7 @@ void readGyroData(int16_t * destination)
 
 void readMagData(int16_t * destination)
 {
-    uint8_t rawData[6];  // x/y/z gyro register data stored here
+    uint8_t rawData[6];  // x/y/z Mag register data stored here
     readBytes(LSM9DS1M_ADDRESS, LSM9DS1M_OUT_X_L_M, 6, &rawData[0]);  // Read the six raw data registers sequentially into data array
     destination[0] = ((int16_t)rawData[1] << 8) | rawData[0] ;  // Turn the MSB and LSB into a signed 16-bit value
     destination[1] = ((int16_t)rawData[3] << 8) | rawData[2] ;  // Data stored as little Endian
@@ -697,7 +697,7 @@ void readMagData(int16_t * destination)
 
 int16_t readTempData()
 {
-  uint8_t rawData[2];  // x/y/z gyro register data stored here
+  uint8_t rawData[2];  // x/y/z Temp register data stored here
   readBytes(LSM9DS1XG_ADDRESS, LSM9DS1XG_OUT_TEMP_L, 2, &rawData[0]);  // Read the two raw data registers sequentially into data array 
   return (((int16_t)rawData[1] << 8) | rawData[0]);  // Turn the MSB and LSB into a 16-bit signed value
 }
